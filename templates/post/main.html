@@ -1,9 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        {% load static %}
+
+        <!-- Bootstrap CSS -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+        <!-- Google Icon -->
+        <link
+            href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp"
+            rel="stylesheet">
         <title>U&Dog</title>
     </head>
     <body>
-        hello
+        <!-- 부트스트랩-네비바-기본 + 수정(search를 제외하고 전부 지움) -->
+        <nav class="navbar navbar-expand-lg navbar-light bg-light" style="position: fixed;width: 100%; z-index: 999">
+            <div class="container-fluid" style="justify-content: space-between; flex-wrap: nowrap; min-width: 1000px">
+                <a class="navbar-brand" href="{% url 'post:main' %}">
+                    <img style="width: 100px; height: 50px;" src="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/715bff1f-f428-44b5-80dc-1acb518095fe/U__Dog.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20221017%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20221017T101103Z&X-Amz-Expires=86400&X-Amz-Signature=ab2a1249d04ff71bcc7c48199fd3d316235c4a7cc8a62b806221f619f8332da7&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22U%2520%2526%2520Dog.png%22&x-id=GetObject">
+                </a>
+                <input class="form-control me-2" style="width: 400px" type="search" placeholder="Search" aria-label="Search">
+                <div style="display: flex">
+                    <a href="{% url 'post:main' %}" style="color: black"><span class="material-icons"
+                                                            style="padding-right: 10px"> home</span></a>
+                    <a href="#" style="color: black"><span id="nav_bar_add_box" class="material-icons-outlined" style="padding-right: 10px">add_box</span></a>
+                    <a href="{% url 'user:logout' %}" style="color: black"><span id="nav_bar_logout" class="material-icons-outlined" style="padding-right: 10px">logout</span></a>
+                    <!-- 프사 누르면 내려오는 드랍다운 -->
+                </div>
+            </div>
+        </nav>
+        <div style="display: flex; flex-direction: column; align-items: center; padding-top: 100px;">
+            Welcome {{ user.user_name }}! <br> Add a picture of your dog to find out what breed it is!
+            <form method="post" action="{% url 'post:upload' %}" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="mb-3" style="margin-top: 50px; width: 400px;">
+                    <label for="formFile" class="form-label">Input a picture of your dog...</label>
+                    <input class="form-control" type="file" id="formFile" name="img">
+                </div>
+                <div style="display: flex; flex-direction:column; align-items: center;">
+                    <button type="submit" class="btn btn-outline-warning">Search</button>
+                </div>
+            </form>
+        </div>
+        <script>
+
+        </script>
     </body>
 </html>

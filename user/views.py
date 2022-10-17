@@ -4,6 +4,7 @@ from .models import User
 from django.contrib import auth
 
 # Create your views here.
+# 회원가입
 def signup(request):
     if request.method == 'GET':
             return render(request, 'user/signup.html')
@@ -27,7 +28,7 @@ def signup(request):
             User.objects.create_user(username=user_id, password=user_password, user_name=user_name, email=user_email, phone=user_phone)
             return redirect('/user/signin/')
 
-
+# 로그인
 def signin(request):
     if request.method == 'GET':
             return render(request, 'user/signin.html')
@@ -42,3 +43,8 @@ def signin(request):
         else:
             msg = '아이디 혹은 비밀번호 정보가 잘못되었습니다.'
             return render(request, 'user/signin.html', {'message': msg})
+
+# 로그아웃
+def logout(request):
+    auth.logout(request)
+    return redirect('/user/signin')
