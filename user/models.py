@@ -6,5 +6,5 @@ class User(AbstractUser):
     class Meta:
         db_table = 'user'
 
-    user_id = models.CharField(max_length=30)
+    user_name = models.CharField(max_length=30)
     phone = models.IntegerField(default=0)
