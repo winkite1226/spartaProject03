@@ -21,24 +21,31 @@
                     {% csrf_token %}
                     <div class="mb-3">
                         <label for="inputID" class="form-label">ID</label>
-                        <input type="text" class="form-control" id="inputID" placeholder="Enter your ID">
+                        <input type="text" class="form-control" id="inputID" placeholder="Enter your ID" name="user_id">
                     </div>
                     <div class="mb-3">
                         <label for="inputPassword" class="form-label">Password</label>
-                        <input type="password" class="form-control" id="inputPassword" placeholder="Enter your password">
+                        <input type="password" class="form-control" id="inputPassword" placeholder="Enter your password" name="user_password">
                     </div>
                     <div class="mb-3">
                         <label for="confirmPassword" class="form-label">Confirm Password</label>
-                        <input type="password" class="form-control" id="confirmPassword" placeholder="Confirm your password">
+                        <input type="password" class="form-control" id="confirmPassword" placeholder="Confirm your password" name="user_password2">
+                    </div>
+                    <div class="mb-3">
+                        <label for="inputName" class="form-label">Name</label>
+                        <input type="text" class="form-control" id="inputName" placeholder="Sparta Kim" name="user_name">
                     </div>
                     <div class="mb-3">
                         <label for="inputEmail" class="form-label">Email</label>
-                        <input type="email" class="form-control" id="inputEmail" placeholder="sparta@gmail.com">
+                        <input type="email" class="form-control" id="inputEmail" placeholder="sparta@gmail.com" name="user_email">
                     </div>
                     <div class="mb-3">
                         <label for="inputPhone" class="form-label">Phone</label>
-                        <input type="text" class="form-control" id="inputPhone" placeholder="01012345678">
+                        <input type="text" class="form-control" id="inputPhone" placeholder="01012345678" name="user_phone">
                     </div>
+                    {% if message %}
+                        <div class = "alert alert-danger">{{message}}</div>
+                    {% endif %}
                     <div style="display: flex; flex-direction:column; align-items: center;">
                         <button type="submit" class="btn btn-outline-warning">SignUP</button>
                     </div>
