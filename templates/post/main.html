@@ -44,6 +44,11 @@
                     <button type="submit" class="btn btn-outline-warning">Search</button>
                 </div>
             </form>
+            <div style="margin-top: 20px;">
+                {% for post in posts %}
+                    <img  style="width: 400px; height: 400px;" src="{% get_media_prefix %}{{ post.image }}" >
+                {% endfor %}
+            </div>
         </div>
         <script>
 

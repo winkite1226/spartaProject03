@@ -7,4 +7,4 @@ class Post(models.Model):
         db_table = 'post'
 
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=False)
-    image = models.ImageField(upload_to='images/',blank=True, null=True)
+    image = models.ImageField(upload_to='images/',blank=True, null=True, default='')
